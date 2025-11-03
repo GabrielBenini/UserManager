@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_user")
@@ -30,5 +32,8 @@ public class User {
     private LocalDate birthDate;
 
     private UserRole role;
+
+    @OneToMany(mappedBy = "userId")
+    private List<Profile> profile = new ArrayList<>();
 
 }
