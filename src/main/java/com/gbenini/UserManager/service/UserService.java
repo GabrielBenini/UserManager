@@ -72,38 +72,38 @@ public class UserService {
 
     }
 
-    public List<UserResponseDTO> searchUsers(String name, String email, String password, LocalDate birthDate, UserRole role){
+    public List<UserResponseDTO> searchUsers(String name, String email, String password,LocalDate birthDate, UserRole role){
 
-        if (name != null) {
-            userRepository.findByName(name)
+        if (name != null){
+            return userRepository.findByName(name)
                     .stream()
                     .map(UserResponseDTO::fromEntity)
                     .toList();
         }
 
-        if (email != null){
-            userRepository.findByEmail(email)
+        if (email != null) {
+            return userRepository.findByEmail(email)
                     .stream()
                     .map(UserResponseDTO::fromEntity)
                     .toList();
         }
 
-        if (password != null){
-            userRepository.findByPassword(password)
+        if (password != null) {
+            return userRepository.findByPassword(password)
                     .stream()
                     .map(UserResponseDTO::fromEntity)
                     .toList();
         }
 
-        if (birthDate != null){
-            userRepository.findByBirthDate(birthDate)
+        if (birthDate != null) {
+            return userRepository.findByBirthDate(birthDate)
                     .stream()
                     .map(UserResponseDTO::fromEntity)
                     .toList();
         }
 
-        if (role != null){
-            userRepository.findByRole(role)
+        if (role != null) {
+            return userRepository.findByRole(role)
                     .stream()
                     .map(UserResponseDTO::fromEntity)
                     .toList();
@@ -115,7 +115,6 @@ public class UserService {
                 .toList();
 
     }
-
 
 
 

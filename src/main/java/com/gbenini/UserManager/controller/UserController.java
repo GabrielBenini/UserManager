@@ -61,12 +61,13 @@ public class UserController {
 
     }
 
-    @GetMapping("/{search}")
-    public ResponseEntity<List<UserResponseDTO>> searchUsers(@RequestParam(required = false)String name,
-                                             @RequestParam(required = false)String email,
-                                             @RequestParam(required = false)String password,
-                                             @RequestParam(required = false)LocalDate birthDate,
-                                             @RequestParam(required = false)UserRole role){
+    @GetMapping("/search")
+    public ResponseEntity<List<UserResponseDTO>> searchUsers(
+            @RequestParam(required = false)String name,
+            @RequestParam(required = false)String email,
+            @RequestParam(required = false)String password,
+            @RequestParam(required = false)LocalDate birthDate,
+            @RequestParam(required = false)UserRole role){
 
         List<UserResponseDTO> responseDTO = userService.searchUsers(name, email, password, birthDate, role);
         return ResponseEntity.ok(responseDTO);
