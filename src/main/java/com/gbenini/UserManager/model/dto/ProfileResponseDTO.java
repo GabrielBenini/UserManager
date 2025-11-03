@@ -1,4 +1,4 @@
-package com.gbenini.UserManager.dto;
+package com.gbenini.UserManager.model.dto;
 
 import com.gbenini.UserManager.model.entity.Profile;
 
