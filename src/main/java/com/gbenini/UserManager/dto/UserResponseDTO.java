@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public record UserResponseDTO(Long userId, String name, String email, String password, LocalDate birthDate, UserRole role) {
 
-    private static UserResponseDTO fromEntity(User user){
+    public static UserResponseDTO fromEntity(User user){
 
         return new UserResponseDTO(
                 user.getUserId(),
@@ -16,7 +16,7 @@ public record UserResponseDTO(Long userId, String name, String email, String pas
                 user.getPassword(),
                 user.getBirthDate(),
                 user.getRole()
-                
+
         );
 
     }

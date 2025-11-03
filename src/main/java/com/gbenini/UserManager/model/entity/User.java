@@ -33,7 +33,7 @@ public class User {
 
     private UserRole role;
 
-    @OneToMany(mappedBy = "userId")
+    @OneToMany(mappedBy = "user")
     private List<Profile> profile = new ArrayList<>();
 
 }
