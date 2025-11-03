@@ -2,6 +2,7 @@ package com.gbenini.UserManager.controller;
 
 import com.gbenini.UserManager.model.dto.UserRequestDTO;
 import com.gbenini.UserManager.model.dto.UserResponseDTO;
+import com.gbenini.UserManager.model.enumerate.UserRole;
 import com.gbenini.UserManager.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -56,6 +60,19 @@ public class UserController {
         return ResponseEntity.noContent().build();
 
     }
+
+    @GetMapping("/{search}")
+    public ResponseEntity<List<UserResponseDTO>> searchUsers(@RequestParam(required = false)String name,
+                                             @RequestParam(required = false)String email,
+                                             @RequestParam(required = false)String password,
+                                             @RequestParam(required = false)LocalDate birthDate,
+                                             @RequestParam(required = false)UserRole role){
+
+        List<UserResponseDTO> responseDTO = userService.searchUsers(name, email, password, birthDate, role);
+        return ResponseEntity.ok(responseDTO);
+
+    }
+
 
 
 
